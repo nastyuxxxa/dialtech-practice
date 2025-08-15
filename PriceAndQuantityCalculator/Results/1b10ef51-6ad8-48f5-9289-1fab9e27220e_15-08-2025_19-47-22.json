@@ -1,0 +1,30 @@
+{
+  "Id": "1b10ef51-6ad8-48f5-9289-1fab9e27220e",
+  "Type": "set",
+  "WarehouseQuantity": 1,
+  "SupplierQuantity": 0,
+  "Quantity": 1,
+  "WarehousePrice": 40,
+  "SupplierPrice": 0,
+  "MinPrice": 40,
+  "SubProducts": [
+    {
+      "Id": "d3736ee7-5478-4553-a5ea-a34e4667b1c9",
+      "Suppliers": [
+        {
+          "Id": "2ef79a44-c96d-497e-afe2-ec275110cd8c",
+          "Quantity": 2,
+          "Price": 40
+        }
+      ],
+      "Warehouses": [
+        {
+          "Id": "f5862c8a-fbc0-47e4-ab49-cb522b4bd53a",
+          "Quantity": 1,
+          "Price": 40
+        }
+      ]
+    }
+  ]
+}
+

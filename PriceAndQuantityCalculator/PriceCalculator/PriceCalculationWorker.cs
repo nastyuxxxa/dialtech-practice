@@ -1,18 +1,15 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using PriceCalculation.Services;
 using RabbitMqServices.Services;
 
 namespace PriceCalculation
 {
     public class PriceCalculationWorker(
-        ILogger<PriceCalculationWorker> logger,
         IRabbitMqListener listener,
         IPriceCalculator calculator,
         IFileWriter fileWriter,
         IOptions<PriceCalculationOptions> options) : IPriceCalculationWorker
     {
-        private readonly ILogger<PriceCalculationWorker> _logger = logger;
         private readonly IRabbitMqListener _listener = listener;
         private readonly IPriceCalculator _calculator = calculator;
         private readonly IFileWriter _fileWriter = fileWriter;
