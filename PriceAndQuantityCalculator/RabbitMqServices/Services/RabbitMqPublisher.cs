@@ -30,7 +30,7 @@ namespace RabbitMqServices.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Ошибка инициализации RabbitMQ Publisher");
+                _logger.LogError(ex, "Ошибка инициализации RabbitMQ Publisher.");
             }
         }
 
@@ -52,7 +52,7 @@ namespace RabbitMqServices.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Ошибка при отправке сообщения с продуктом {id} в очередь {queue}", product.Id, _queueName);
+                _logger.LogError(ex, "Ошибка при отправке сообщения с продуктом {id} в очередь {queue}.", product.Id, _queueName);
             }
         }
     }

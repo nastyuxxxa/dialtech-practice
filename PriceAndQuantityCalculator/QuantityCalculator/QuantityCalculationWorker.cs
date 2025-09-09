@@ -26,7 +26,7 @@ namespace QuantityCalculation
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Ошибка при калькуляции количества продукта {Id}", product.Id);
+                    _logger.LogError(ex, "Ошибка при калькуляции количества продукта {Id}.", product.Id);
                 }
             };
         }

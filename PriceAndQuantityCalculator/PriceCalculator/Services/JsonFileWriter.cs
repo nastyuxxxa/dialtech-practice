@@ -23,7 +23,7 @@ namespace PriceCalculation.Services
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
-                    _logger.LogInformation("Создана директория {directory}", directoryPath);
+                    _logger.LogInformation("Создана директория {directory}.", directoryPath);
                 }
 
                 var fileName = $"{product.Id}_{DateTime.Now:dd-MM-yyyy_HH-mm-ss}.json";
@@ -32,10 +32,11 @@ namespace PriceCalculation.Services
                 var json = JsonSerializer.Serialize(productDto, _jsonOptions);
 
                 await File.WriteAllTextAsync(filePath, json);
+                _logger.LogInformation("Результат калькуляции количества и цен продукта записан в файл {fileName}", fileName);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Ошибка при записи результата калькуляции количества и цен продукта {id} в файл", product.Id);
+                _logger.LogError(ex, "Ошибка при записи результата калькуляции количества и цен продукта {id} в файл.", product.Id);
             }
         }
     }

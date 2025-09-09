@@ -18,7 +18,7 @@ namespace FeedProcessor.Services
         {
             if (string.IsNullOrWhiteSpace(feedContent))
             {
-                _logger.LogWarning("Получен пустой контент для парсинга");
+                _logger.LogWarning("Получен пустой контент для парсинга.");
                 return [];
             }
 
@@ -34,7 +34,7 @@ namespace FeedProcessor.Services
                         var product = element.Deserialize<Product>(_options);
                         if (product is null || string.IsNullOrWhiteSpace(product.Type))
                         {
-                            _logger.LogWarning("Один из продуктов невалиден: отсутствует тип или объект null");
+                            _logger.LogWarning("Один из продуктов невалиден: отсутствует тип или объект null.");
                         }
                         else
                         {
@@ -43,7 +43,7 @@ namespace FeedProcessor.Services
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError(ex, "Ошибка при парсинге одного из продуктов");
+                        _logger.LogError(ex, "Ошибка при парсинге одного из продуктов.");
                     }
                 }
 
@@ -51,7 +51,7 @@ namespace FeedProcessor.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Ошибка при парсинге JSON");
+                _logger.LogError(ex, "Ошибка при парсинге JSON.");
                 return [];
             }
         }

@@ -38,11 +38,11 @@ namespace RabbitMqServices.Services
 
                 await _channel.BasicConsumeAsync(_queueName, autoAck: false, consumer: consumer, cancellationToken: stoppingToken);
 
-                _logger.LogInformation("Подключение к RabbitMQ и подписка на очередь {queue}", _queueName);
+                _logger.LogInformation("Подключение к RabbitMQ и подписка на очередь {queue}.", _queueName);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Ошибка инициализации RabbitMQ Listener");
+                _logger.LogError(ex, "Ошибка инициализации RabbitMQ Listener.");
             }
         }
 
@@ -66,10 +66,12 @@ namespace RabbitMqServices.Services
                     await ProductReceived(product);
 
                 await _channel.BasicAckAsync(ea.DeliveryTag, false);
+
+                _logger.LogInformation("Сообщение из очереди {queue} с продуктом {productId} обработано.", _queueName, product.Id);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Ошибка при обработке сообщения");
+                _logger.LogError(ex, "Ошибка при обработке сообщения.");
                 await _channel.BasicNackAsync(ea.DeliveryTag, false, true);
             }
         }

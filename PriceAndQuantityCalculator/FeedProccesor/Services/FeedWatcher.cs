@@ -25,7 +25,7 @@ namespace FeedProcessor.Services
             if (!Directory.Exists(_options.WatchDirectoryPath))
             {
                 Directory.CreateDirectory(_options.WatchDirectoryPath);
-                _logger.LogInformation("Создана директория {directory}", _options.WatchDirectoryPath);
+                _logger.LogInformation("Создана директория {directory}.", _options.WatchDirectoryPath);
             }
 
             _fileWatcher = new FileSystemWatcher(_options.WatchDirectoryPath, _options.FileFilter)
@@ -36,7 +36,7 @@ namespace FeedProcessor.Services
             _fileWatcher.Created += async (s, e) => await OnFileCreatedAsync(e.FullPath, e.Name, stoppingToken);
             _fileWatcher.EnableRaisingEvents = true;
 
-            _logger.LogInformation("FeedWatcher запущен над директорией: {directory}", _options.WatchDirectoryPath);
+            _logger.LogInformation("FeedWatcher запущен над директорией: {directory}.", _options.WatchDirectoryPath);
 
             return Task.CompletedTask;
         }
@@ -56,16 +56,16 @@ namespace FeedProcessor.Services
                     { 
                         await _publisher.PublishProductAsync(product);
                     }
-                    _logger.LogInformation("Файл {fileName} успешно обработан", fileName);
+                    _logger.LogInformation("Файл {fileName} успешно обработан.", fileName);
                 }
                 else
                 {
-                    _logger.LogWarning("Файл {fileName} не содержит валидных продуктов", fileName);
+                    _logger.LogWarning("Файл {fileName} не содержит валидных продуктов.", fileName);
                 }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Ошибка при обработке файла {fileName}", fileName);
+                _logger.LogError(ex, "Ошибка при обработке файла {fileName}.", fileName);
             }
             finally
             {

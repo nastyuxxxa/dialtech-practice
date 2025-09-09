@@ -31,7 +31,7 @@ namespace FeedProcessor.Services
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Ошибка при чтении файла {filePath}", filePath);
+                    _logger.LogError(ex, "Ошибка при чтении файла {filePath}.", filePath);
                     throw;
                 }
             }
